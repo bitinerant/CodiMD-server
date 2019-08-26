@@ -164,7 +164,8 @@ if (!Array.isArray) {
 }
 
 function renderHistory (title, tags) {
-  // console.debug(tags);
+  console.debug("HLOG tags: "+tags);
+  console.log("HLOG tags: "+tags);
   const id = urlpath ? location.pathname.slice(urlpath.length + 1, location.pathname.length).split('/')[1] : location.pathname.split('/')[1]
   return {
     id,
@@ -203,6 +204,7 @@ export function getHistory (callback) {
 }
 
 function getServerHistory (callback) {
+  console.log('HLOG: getServerHistory')
   $.get(`${serverurl}/history`)
     .done(data => {
       if (data.history) {
@@ -215,6 +217,7 @@ function getServerHistory (callback) {
 }
 
 export function getStorageHistory (callback) {
+  console.log('HLOG: getStorageHistory')
   let data = store.get('notehistory')
   if (data) {
     if (typeof data === 'string') { data = JSON.parse(data) }

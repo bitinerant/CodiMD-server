@@ -11,6 +11,8 @@
                             </li>
                             <li class="ui-history<% if(signin) { %> active<% } %>"><a href="#"><%= __('History') %></a>
                             </li>
+                            <li class="ui-search<% if(signin) { %> active<% } %>"><a href="#"><%= __('Search') %></a>
+                            </li>
                             <div class="ui-signin" style="float: right; margin-top: 8px;<% if(signin) { %> display: none;<% } %>">
                                 <% if (allowAnonymous) { %>
                                 <a type="button" href="<%- serverURL %>/new" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> <%= __('New guest note') %></a>
@@ -122,6 +124,20 @@
                 <ul class="pagination"></ul>
             </div>
 
+            <div id="search" class="section" style="display:none;">
+                Welcome!
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input class="search_search form-control" placeholder="<%= __('Global search...') %>" />
+                    </div>
+                </form>
+                <ul id="search-list" class="list">
+                </ul>
+                <ul class="pagination"></ul>
+                <h4 class="ui-nosearch" style="display:none;">
+                    <%= __('No search') %>
+                </h4>
+            </div>
             <div class="mastfoot">
                 <div class="inner">
                     <select class="ui-locale">
