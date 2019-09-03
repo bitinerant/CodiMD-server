@@ -115,7 +115,7 @@ function pageInit () {
       else $('.ui-avatar').prop('src', '').hide()
       $('.ui-name').html(data.name)
       $('.ui-signout').show()
-      $('.ui-history').click()
+      $('.ui-search').click()
       parseServerToSearch($('.search_search').val(), searchList, parseSearchCallback)
       parseServerToHistory(historyList, parseHistoryCallback)
     },
@@ -159,10 +159,12 @@ $('.ui-history').click(() => {
 
 function checkHistoryList () {
   if ($('#history-list').children().length > 0) {
+    console.log("HLOG getStorageHistory not Calling")
     $('.pagination').show()
     $('.ui-nohistory').hide()
     $('.ui-import-from-browser').hide()
   } else if ($('#history-list').children().length === 0) {
+    console.log("HLOG getStorageHistory Calling")
     $('.pagination').hide()
     $('.ui-nohistory').slideDown()
     getStorageHistory(data => {
@@ -446,6 +448,7 @@ function buildTagsFilter (tags) {
   filtertags = tags
 }
 $('.ui-use-tags').on('change', function () {
+  console.log('HLOG .ui-use-tags onchange calling');
   const tags = []
   const data = $(this).select2('data')
   for (let i = 0; i < data.length; i++) { tags.push(data[i].text) }
@@ -728,15 +731,22 @@ $('.ui-refresh-search').click(() => {
   })
 })
 
-$('.search_search').keyup(() => {
+var timeout;
+
+$('.search_search').on('input', () => {
   const s_key = $('.search_search').val();
   const lastKeyword = $('.search').val()
 
-  searchList.clear()
+  // Use setTimeout():
 
-  parseSearch(s_key, searchList, (list, notesearch) => {
-    parseSearchCallback(list, notesearch)
-    $('.search').val(lastKeyword)
-    checkSearchList()
-  })
+  var delayInMilliseconds = 500; //0.5 second
+
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+
+  timeout = setTimeout(function() {
+    searchList.clear()
+    parseServerToSearch(s_key, searchList, parseSearchCallback)
+  }, delayInMilliseconds);
 })

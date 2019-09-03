@@ -1,7 +1,7 @@
+
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
-
             <div class="masthead clearfix">
                 <div class="inner">
                     <h3 class="masthead-brand"></h3>
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            <div id="home" class="section"<% if(signin) { %> style="display:none;"<% } %>>
+            <div id="home" class="section"<% if(signin || searchkey) { %> style="display:none;"<% } %>>
                 <div class="inner cover">
                     <h1 class="cover-heading"><i class="fa fa-file-text"></i> CodiMD</h1>
                     <p class="lead">
@@ -88,7 +88,8 @@
                 </div>
             </div>
 
-            <div id="history" class="section"<% if(!signin) { %> style="display:none;"<% } %>>
+            <div id="history" class="section"<% if(!signin || searchkey) { %> style="display:none;"<% } %>>
+                <%%>
                 <div class="ui-signin"<% if(signin) { %> style="display:none;"<% } %>>
                     <p><%= __('Below is the history from browser') %></p>
                 </div>
@@ -124,13 +125,14 @@
                 <ul class="pagination"></ul>
             </div>
 
-            <div id="search" class="section" style="display:none;">
+            <div id="search" class="section" <% if(!signin || !searchkey) { %> style="display:none;"<% } %>>
+                                
                 Welcome!
-                <form class="form-inline">
+                <div class="form-inline">
                     <div class="form-group">
-                        <input class="search_search form-control" placeholder="<%= __('Global search...') %>" />
+                        <input class="search_search form-control" id="id_searchkey" placeholder="<%= __('Global search...') %>" value="<%= searchkey || ''%>"/>
                     </div>
-                </form>
+                </div>
                 <ul id="search-list" class="list">
                 </ul>
                 <ul class="pagination"></ul>
