@@ -746,9 +746,11 @@ $('.search_search').on('input', () => {
   }
 
   timeout = setTimeout(function() {
-    // searchList.clear()
-    // parseServerToSearch(s_key, searchList, parseSearchCallback)
-    window.location.href = '/searchByKey/'+s_key;
-    window.open(window.location.href);
+    // window.location.href = '/searchByKey/'+s_key;
+    // window.location.href = '/searchByKey/'+s_key;
+    window.history.pushState("object or string", "Title", '/searchByKey/'+s_key);
+    searchList.clear()
+    parseServerToSearch(s_key, searchList, parseSearchCallback)
+    // window.open(window.location.href);
   }, delayInMilliseconds);
 })
