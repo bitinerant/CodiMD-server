@@ -746,7 +746,9 @@ $('.search_search').on('input', () => {
   }
 
   timeout = setTimeout(function() {
-    searchList.clear()
-    parseServerToSearch(s_key, searchList, parseSearchCallback)
+    // searchList.clear()
+    // parseServerToSearch(s_key, searchList, parseSearchCallback)
+    window.location.href = '/searchByKey/'+s_key;
+    window.open(window.location.href);
   }, delayInMilliseconds);
 })
