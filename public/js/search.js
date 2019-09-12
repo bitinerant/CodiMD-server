@@ -70,7 +70,7 @@ function saveSearchToStorage (notesearch) {
 }
 
 function saveSearchToServer (notesearch) {
-  $.post(`${serverurl}/search`, {
+  $.post(`${serverurl}/search.json`, {
     search: JSON.stringify(notesearch)
   })
 }
@@ -78,7 +78,7 @@ function saveSearchToServer (notesearch) {
 export function saveStorageSearchToServer (callback) {
   const data = store.get('notesearch')
   if (data) {
-    $.post(`${serverurl}/search`, {
+    $.post(`${serverurl}/search.json`, {
       search: data
     })
       .done(data => {
@@ -206,9 +206,9 @@ export function getSearch (s_key, callback) {
 
 function getServerSearch (s_key,callback) {
   console.log('HLOG: getServerSearch')
-  let url = `${serverurl}/search/`;
+  let url = `${serverurl}/search.json/`;
   if(s_key && s_key !== '') {
-    url = `${serverurl}/search/?q=`+s_key
+    url = `${serverurl}/search.json/?q=`+s_key
   }
   $.get(url)
     .done(data => {
@@ -244,9 +244,9 @@ export function parseSearch (s_key, list, callback) {
 }
 
 export function parseServerToSearch (s_key, list, callback) {
-  let url = `${serverurl}/search/`;
+  let url = `${serverurl}/search.json/`;
   if(s_key) {
-    url = `${serverurl}/search/?q=`+s_key
+    url = `${serverurl}/search.json/?q=`+s_key
   }
   $.get(url)
     .done(data => {
@@ -301,7 +301,7 @@ function parseToSearch (list, notesearch, callback) {
 }
 
 export function postSearchToServer (noteId, data, callback) {
-  $.post(`${serverurl}/search/${noteId}`, data)
+  $.post(`${serverurl}/search.json/${noteId}`, data)
     .done(result => callback(null, result))
     .fail((xhr, status, error) => {
       console.error(xhr.responseText)
@@ -311,7 +311,7 @@ export function postSearchToServer (noteId, data, callback) {
 
 export function deleteServerSearch (noteId, callback) {
   $.ajax({
-    url: `${serverurl}/search${noteId ? '/' + noteId : ''}`,
+    url: `${serverurl}/search.json${noteId ? '/' + noteId : ''}`,
     type: 'DELETE'
   })
     .done(result => callback(null, result))

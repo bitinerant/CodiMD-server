@@ -737,20 +737,15 @@ $('.search_search').on('input', () => {
   const s_key = $('.search_search').val();
   const lastKeyword = $('.search').val()
 
-  // Use setTimeout():
-
-  var delayInMilliseconds = 500; //0.5 second
+  var delayInMilliseconds = 500;
 
   if (timeout) {
     clearTimeout(timeout);
   }
 
   timeout = setTimeout(function() {
-    // window.location.href = '/searchByKey/'+s_key;
-    // window.location.href = '/searchByKey/'+s_key;
-    window.history.pushState("object or string", "Title", '/searchByKey/'+s_key);
+    window.history.pushState("object or string", "Title", '/search/'+s_key);
     searchList.clear()
     parseServerToSearch(s_key, searchList, parseSearchCallback)
-    // window.open(window.location.href);
   }, delayInMilliseconds);
 })

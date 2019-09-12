@@ -1,7 +1,7 @@
-
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
+
             <div class="masthead clearfix">
                 <div class="inner">
                     <h3 class="masthead-brand"></h3>
@@ -126,18 +126,16 @@
             </div>
 
             <div id="search" class="section" <% if(!signin || !searchkey) { %> style="display:none;"<% } %>>
-                                
-                Welcome!
                 <div class="form-inline">
                     <div class="form-group">
-                        <input class="search_search form-control" id="id_searchkey" placeholder="<%= __('Global search...') %>" value="<%= searchkey || ''%>"/>
+                        <input class="search_search form-control" id="id_searchkey" placeholder="<%= __('Search (aaa bbbccc OR "bbb ccc")"') %>" value="<%= searchkey || ''%>"/>
                     </div>
                 </div>
                 <ul id="search-list" class="list">
                 </ul>
                 <ul class="pagination"></ul>
                 <h4 class="ui-nosearch" style="display:none;">
-                    <%= __('No search') %>
+                    <%= __('No results found') %>
                 </h4>
             </div>
             <div class="mastfoot">
