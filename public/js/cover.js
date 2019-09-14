@@ -736,7 +736,7 @@ $('.search_search').on('input', () => {
   }
 
   timeout = setTimeout(function() {
-    window.history.pushState("object or string", "Title", '/search/'+s_key);
+    window.history.pushState("object or string", "Title", '/search/'+encodeURIComponent(s_key));
     searchList.clear()
     parseServerToSearch(s_key, searchList, parseSearchCallback)
   }, delayInMilliseconds);
