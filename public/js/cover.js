@@ -479,7 +479,7 @@ $('.ui-search').click(() => {
 
 function checkSearchList () {
   if ($('#search-list').children().length > 0) {
-    $('.pagination').show()
+    $('.pagination').hide()
     $('.ui-nosearch').hide()
     $('.ui-import-from-browser').hide()
   } else if ($('#search-list').children().length === 0) {
