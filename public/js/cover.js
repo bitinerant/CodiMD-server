@@ -98,7 +98,6 @@ const optionsSearch = {
 const historyList = new List('history', optionsHistory)
 const searchList = new List('search', optionsSearch)
 
-
 window.migrateHistoryFromTempCallback = pageInit
 setloginStateChangeEvent(pageInit)
 
@@ -146,25 +145,22 @@ $('.ui-home').click(function (e) {
   if (!$('#home').is(':visible')) {
     $('.section:visible').hide()
     $('#home').fadeIn()
-  }                                             
-})                                                                                                                                                                                                               
+  }
+})
 
 $('.ui-history').click(() => {
-  if (!$('#history').is(':visible')){
+  if (!$('#history').is(':visible')) {
     $('.section:visible').hide()
     $('#history').fadeIn()
   }
 })
 
-
 function checkHistoryList () {
   if ($('#history-list').children().length > 0) {
-    console.log("HLOG getStorageHistory not Calling")
     $('.pagination').show()
     $('.ui-nohistory').hide()
     $('.ui-import-from-browser').hide()
   } else if ($('#history-list').children().length === 0) {
-    console.log("HLOG getStorageHistory Calling")
     $('.pagination').hide()
     $('.ui-nohistory').slideDown()
     getStorageHistory(data => {
@@ -175,7 +171,7 @@ function checkHistoryList () {
   }
 }
 
-function parseHistoryCallback (list, notehistory) {  
+function parseHistoryCallback (list, notehistory) {
   checkHistoryList()
   // sort by pinned then timestamp
   list.sort('', {
@@ -448,7 +444,6 @@ function buildTagsFilter (tags) {
   filtertags = tags
 }
 $('.ui-use-tags').on('change', function () {
-  console.log('HLOG .ui-use-tags onchange calling');
   const tags = []
   const data = $(this).select2('data')
   for (let i = 0; i < data.length; i++) { tags.push(data[i].text) }
@@ -474,9 +469,6 @@ $('.ui-use-tags').on('change', function () {
 $('.search').keyup(() => {
   checkHistoryList()
 })
-
-
-////////////////////////////////////// Search ///////////////////////////
 
 $('.ui-search').click(() => {
   if (!$('#search').is(':visible')){
@@ -749,3 +741,4 @@ $('.search_search').on('input', () => {
     parseServerToSearch(s_key, searchList, parseSearchCallback)
   }, delayInMilliseconds);
 })
+
