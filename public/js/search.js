@@ -25,7 +25,7 @@ export function parseSearch (s_key, list, callback) {
 export function parseServerToSearch (s_key, list, callback) {
   let url = `${serverurl}/search.json/`;
   if(s_key) {
-    url = `${serverurl}/search.json/?q=`+s_key
+    url = `${serverurl}/search.json/?q=`+encodeURIComponent(s_key)
   }
   $.get(url)
     .done(data => {
