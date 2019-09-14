@@ -89,7 +89,6 @@
             </div>
 
             <div id="history" class="section"<% if(!signin || searchkey) { %> style="display:none;"<% } %>>
-                <%%>
                 <div class="ui-signin"<% if(signin) { %> style="display:none;"<% } %>>
                     <p><%= __('Below is the history from browser') %></p>
                 </div>
@@ -126,9 +125,10 @@
             </div>
 
             <div id="search" class="section" <% if(!signin || !searchkey) { %> style="display:none;"<% } %>>
+                <br>
                 <div class="form-inline">
                     <div class="form-group">
-                        <input class="search_search form-control" id="id_searchkey" placeholder="<%= __('Search (aaa bbbccc OR "bbb ccc")"') %>" value="<%= searchkey || ''%>"/>
+                        <input class="search_search form-control" id="id_searchkey" style="width: 642px;" placeholder="<%= __('Search - for example: water digitalocean OR "digital ocean"') %>" value="<%= searchkey || ''%>"/>
                     </div>
                 </div>
                 <ul id="search-list" class="list">
