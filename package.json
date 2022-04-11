@@ -84,7 +84,7 @@
     "mermaid": "~8.13.8",
     "meta-marked": "git+https://github.com/codimd/meta-marked#semver:^0.4.5",
     "method-override": "^2.3.7",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "minio": "^6.0.0",
     "moment": "^2.29.2",
     "morgan": "^1.7.0",
