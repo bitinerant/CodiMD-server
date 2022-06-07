@@ -1,3 +1,9 @@
+# DO NOT USE this code as it is
+
+It contains dozens of GitHub-recognized security issues. For an up-to-date version, see https://github.com/hedgedoc/hedgedoc (new name for CodiMD). The only reason I am not just deleting this repo is because it contains code for site-wide search.
+
+-----
+
 CodiMD
 ===
 
